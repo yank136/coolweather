@@ -1,11 +1,14 @@
 package com.example.yujianghu.coolweather.util;
 
+import android.nfc.Tag;
 import android.text.TextUtils;
 import android.util.Log;
 
 import com.example.yujianghu.coolweather.db.City;
 import com.example.yujianghu.coolweather.db.County;
 import com.example.yujianghu.coolweather.db.Province;
+import com.example.yujianghu.coolweather.gson.Weather;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -90,6 +93,29 @@ public class Utility {
             }
         }
         return false;
+    }
+
+//    将返回的JSON数据解析成weather类
+    public static Weather handleWeatherResponse(String response){
+        try{
+            JSONObject jsonObject = new JSONObject(response);
+            JSONArray jsonArray = jsonObject.getJSONArray("HeWeather6");
+            String weatherContent = jsonArray.getJSONObject(0).toString();
+
+            Log.d(TAG,"weatherContent:"+weatherContent);
+
+//            Weather weather =new Weather();
+
+//            Log.d(TAG,"weather"+weather.toString());
+//            Log.d(TAG,"return weather"+weather);
+
+            return new Gson().fromJson(weatherContent,Weather.class);
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
     }
 
 
