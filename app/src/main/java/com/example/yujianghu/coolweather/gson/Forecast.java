@@ -27,9 +27,9 @@ public class Forecast {
     public String sr;
     public String ss;
 
-    @SerializedName("tem_max")
+    @SerializedName("tmp_max")
     public String max;
-    @SerializedName("tem_min")
+    @SerializedName("tmp_min")
     public String min;
     @SerializedName("uv_index")
     public String uvIndex;

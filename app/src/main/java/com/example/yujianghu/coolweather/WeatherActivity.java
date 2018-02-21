@@ -1,5 +1,6 @@
 package com.example.yujianghu.coolweather;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
@@ -24,6 +25,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.yujianghu.coolweather.gson.Forecast;
 import com.example.yujianghu.coolweather.gson.Weather;
+import com.example.yujianghu.coolweather.service.AutoUpdateService;
 import com.example.yujianghu.coolweather.util.HttpUtil;
 import com.example.yujianghu.coolweather.util.Utility;
 
@@ -242,6 +244,9 @@ public class WeatherActivity extends AppCompatActivity {
             dateText.setText(forecast.date);
             infoText.setText(forecast.info);
             maxText.setText(forecast.max);
+
+            Log.d(TAG,"max:"+forecast.max);
+
             minText.setText(forecast.min);
             forecastLayout.addView(view);
 
@@ -255,6 +260,8 @@ public class WeatherActivity extends AppCompatActivity {
         carWashText.setText(carWash);
         sportText.setText(sport);
         weatherLayout.setVisibility(View.VISIBLE);
+        Intent intent = new Intent(this, AutoUpdateService.class);
+        startService(intent);
     }
 
 }
