@@ -118,7 +118,7 @@ public class WeatherActivity extends AppCompatActivity {
 
         String bingPic = prefs.getString("bing_pic",null);
         if (bingPic != null){
-            Glide.with(this).load(bingPic).into(bingPicImg);
+            Glide.with(this).load("http://az29176.vo.msecnd.net/videocontent/Innerdalsvatna_Lake_Norway_nimiaRM_709614_1080_HD_ZH-CN850417908.jpg").into(bingPicImg);
         }else {
             loadBingPic();
 
@@ -213,7 +213,7 @@ public class WeatherActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Glide.with(WeatherActivity.this).load(bingPic).into(bingPicImg);
+                        Glide.with(WeatherActivity.this).load("http://az29176.vo.msecnd.net/videocontent/Innerdalsvatna_Lake_Norway_nimiaRM_709614_1080_HD_ZH-CN850417908.jpg").into(bingPicImg);
 
                         Log.d(TAG,"Glide bingPic");
 
